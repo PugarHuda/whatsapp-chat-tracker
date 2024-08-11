@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   // other metadata
 };
 
-const BasicChartPage: React.FC = () => {
+const WhatsappPage: React.FC = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Basic Chart" />
+      <Breadcrumb pageName="Analisa Whatsapp" />
 
       <BasicChart />
     </DefaultLayout>
   );
 };
 
-export default BasicChartPage;
+export default WhatsappPage;

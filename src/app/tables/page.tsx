@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 
 export const metadata: Metadata = {
-  title: "Next.js Tables Page | NextAdmin - Next.js Dashboard Kit",
+  title: "Moemtaz",
   description: "This is Next.js Tables page for NextAdmin Dashboard Kit",
 };
 
