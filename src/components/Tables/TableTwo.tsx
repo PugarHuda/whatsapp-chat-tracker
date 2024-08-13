@@ -1,38 +1,28 @@
-import Image from "next/image";
 import { Product } from "@/types/product";
-
-const productData: Product[] = [
+const chatData = [
   {
-    image: "/images/product/product-01.png",
-    name: "Apple Watch Series 7",
-    category: "Electronics",
-    price: 296,
-    sold: 22,
-    profit: 45,
+    phoneNumber: "+6281234567890",
+    time: "10:15 AM",
+    message: "Hello, I need help with my order.",
+    remarks: "First Chat",
   },
   {
-    image: "/images/product/product-02.png",
-    name: "Macbook Pro M1",
-    category: "Electronics",
-    price: 546,
-    sold: 12,
-    profit: 125,
+    phoneNumber: "+6289876543210",
+    time: "11:30 AM",
+    message: "Can I return this item?",
+    remarks: "First Chat",
   },
   {
-    image: "/images/product/product-03.png",
-    name: "Dell Inspiron 15",
-    category: "Electronics",
-    price: 443,
-    sold: 64,
-    profit: 247,
+    phoneNumber: "+6285551234567",
+    time: "1:45 PM",
+    message: "What's the status of my delivery?",
+    remarks: "First Chat",
   },
   {
-    image: "/images/product/product-04.png",
-    name: "HP Probook 450",
-    category: "Electronics",
-    price: 499,
-    sold: 72,
-    profit: 103,
+    phoneNumber: "+6282345678901",
+    time: "2:20 PM",
+    message: "I received the wrong product.",
+    remarks: "First Chat",
   },
 ];
 
@@ -41,66 +31,48 @@ const TableTwo = () => {
     <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
       <div className="px-4 py-6 md:px-6 xl:px-9">
         <h4 className="text-body-2xlg font-bold text-dark dark:text-white">
-          Top Products
+          Daftar Chat
         </h4>
       </div>
 
-      <div className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5">
+      <div className="grid grid-cols-6 gap-x-4 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5">
         <div className="col-span-3 flex items-center">
-          <p className="font-medium">Product Name</p>
+          <p className="font-medium">Nomor Pengirim</p>
         </div>
         <div className="col-span-2 hidden items-center sm:flex">
-          <p className="font-medium">Category</p>
+          <p className="font-medium">Jam Chat Masuk</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="font-medium">Price</p>
+          <p className="font-medium">Isi Pesan</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="font-medium">Sold</p>
-        </div>
-        <div className="col-span-1 flex items-center">
-          <p className="font-medium">Profit</p>
+          <p className="font-medium">Remarks</p>
         </div>
       </div>
 
-      {productData.map((product, key) => (
+      {chatData.map((chat, key) => (
         <div
-          className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5"
+          className="grid grid-cols-6 gap-x-4 border-t border-stroke px-4 py-4.5 dark:border-dark-3 sm:grid-cols-8 md:px-6 2xl:px-7.5"
           key={key}
         >
           <div className="col-span-3 flex items-center">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-              <div className="h-12.5 w-15 rounded-md">
-                <Image
-                  src={product.image}
-                  width={60}
-                  height={50}
-                  alt="Product"
-                />
-              </div>
-              <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-                {product.name}
-              </p>
-            </div>
+            <p className="text-body-sm font-medium text-dark dark:text-dark-6">
+              {chat.phoneNumber}
+            </p>
           </div>
           <div className="col-span-2 hidden items-center sm:flex">
             <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-              {product.category}
+              {chat.time}
             </p>
           </div>
           <div className="col-span-1 flex items-center">
             <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-              ${product.price}
+              {chat.message}
             </p>
           </div>
           <div className="col-span-1 flex items-center">
             <p className="text-body-sm font-medium text-dark dark:text-dark-6">
-              {product.sold}
-            </p>
-          </div>
-          <div className="col-span-1 flex items-center">
-            <p className="text-body-sm font-medium text-green">
-              ${product.profit}
+              {chat.remarks}
             </p>
           </div>
         </div>

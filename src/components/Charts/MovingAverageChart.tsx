@@ -124,6 +124,7 @@ const MovingAverageChart: React.FC = () => {
   return (
     <div className="rounded-[10px] bg-white p-6 shadow-1">
       <div className="mb-4">
+        <label className="mb-1 block text-sm font-medium">Select Date</label>
         <DatePicker
           selected={selectedDate}
           onChange={(date: Date) => setSelectedDate(date)}
