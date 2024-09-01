@@ -1,29 +1,28 @@
 import React from "react";
-import Link from "next/link";
 
-interface ButtonPropTypes {
+type ButtonPropTypes = {
   label: string;
   link: string;
-  customClasses: string;
-  children?: React.ReactNode;
-}
+  customClasses?: string;
+  onClick?: () => void; // Add this line to accept onClick
+  disabled?: boolean;
+};
 
-const ButtonDefault = ({
+const ButtonDefault: React.FC<ButtonPropTypes> = ({
   label,
   link,
   customClasses,
-  children,
-}: ButtonPropTypes) => {
+  onClick,
+  disabled,
+}) => {
   return (
-    <>
-      <Link
-        className={`inline-flex items-center justify-center gap-2.5 text-center font-medium hover:bg-opacity-90 ${customClasses}`}
-        href={link}
-      >
-        {children}
-        {label}
-      </Link>
-    </>
+    <button
+      onClick={onClick}
+      className={`button ${customClasses}`}
+      disabled={disabled}
+    >
+      {label}
+    </button>
   );
 };
 
