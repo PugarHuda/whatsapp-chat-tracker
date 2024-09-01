@@ -49,17 +49,16 @@ const MovingAverageChart: React.FC = () => {
     setSumNilaiBD(Array(numDays).fill(0)); // Initialize with zeros
   }, [selectedDate]);
 
-const calculateMovingAverage = (data: number[], windowSize: number) => {
-  let movingAverage = Array(data.length).fill(null); // Initialize with null values
-  for (let i = 0; i < data.length; i++) {
-    const start = Math.max(0, i - windowSize + 1); // Start index for the moving window
-    const window = data.slice(start, i + 1); // Slice from start to current index
-    const average = window.reduce((acc, val) => acc + val, 0) / window.length;
-    movingAverage[i] = average; // Place the average at the current index
-  }
-  return movingAverage;
-};
-
+  const calculateMovingAverage = (data: number[], windowSize: number) => {
+    let movingAverage = Array(data.length).fill(null); // Initialize with null values
+    for (let i = 0; i < data.length; i++) {
+      const start = Math.max(0, i - windowSize + 1); // Start index for the moving window
+      const window = data.slice(start, i + 1); // Slice from start to current index
+      const average = window.reduce((acc, val) => acc + val, 0) / window.length;
+      movingAverage[i] = average; // Place the average at the current index
+    }
+    return movingAverage;
+  };
 
   const movingAverageBD = calculateMovingAverage(nilaiBD, 5);
   const movingAverageTotal = calculateMovingAverage(total, 5);
@@ -102,33 +101,35 @@ const calculateMovingAverage = (data: number[], windowSize: number) => {
       },
     },
     annotations: {
-      points: movingAverageSumNilaiBD.map((value, index) => {
-        if (value !== null) { // Check if value is not null
-          return {
-            x: categories[index],
-            y: value,
-            marker: {
-              size: 5,
-              fillColor: "#fff",
-              strokeColor: "#00E396",
-              radius: 2,
-            },
-            label: {
-              borderColor: "#00E396",
-              offsetY: -15,
-              style: {
-                color: "#00E396",
-                background: "#fff",
+      points: movingAverageSumNilaiBD
+        .map((value, index) => {
+          if (value !== null) {
+            // Check if value is not null
+            return {
+              x: categories[index],
+              y: value,
+              marker: {
+                size: 5,
+                fillColor: "#fff",
+                strokeColor: "#00E396",
+                radius: 2,
               },
-              text: `${value.toFixed(1)}%`,
-            },
-          };
-        }
-        return null; // Return null if the value is null
-      }).filter(point => point !== null), // Filter out null values from annotations
+              label: {
+                borderColor: "#00E396",
+                offsetY: -15,
+                style: {
+                  color: "#00E396",
+                  background: "#fff",
+                },
+                text: `${value.toFixed(1)}%`,
+              },
+            };
+          }
+          return null; // Return null if the value is null
+        })
+        .filter((point) => point !== null), // Filter out null values from annotations
     },
   };
-
 
   const series = [
     {
@@ -174,7 +175,7 @@ const calculateMovingAverage = (data: number[], windowSize: number) => {
               />
               <input
                 type="number"
-                placeholder={`Sum Nilai BD (${index + 1})`}
+                placeholder={`Nilai NR (${index + 1})`}
                 className="w-full rounded border p-2"
                 onChange={(e) => handleInputChange(e, "sumNilaiBD", index)}
               />
